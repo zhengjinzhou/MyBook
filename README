@@ -1,0 +1,11 @@
+1、首先考虑项目需要使用的基本依赖或者第三方框架
+    1）Butterknife框架----view的依赖注入
+    2）retrofit+rxjava+rxandroid的网络请求框架
+    3）glide的图片显示框架
+    4）其他如gson+desgin+java8等
+
+2、基于MVP的设计模式，严格要求整体项目采用MVP模式开发的
+
+3、创建BaseActivity、BaseFragment、BaseContract等基类，集成众多常用方法，被其他继承，达到减少大量代码的使用
+
+4、

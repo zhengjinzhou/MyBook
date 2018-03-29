@@ -1,0 +1,27 @@
+package zhou.com.mybook.ui.contract;
+
+import java.util.List;
+
+import zhou.com.mybook.base.BaseContract;
+import zhou.com.mybook.bean.BookMixAToc;
+import zhou.com.mybook.bean.Recommend;
+
+/**
+ * Created by zhou on 2018/3/22.
+ */
+
+public interface RecommendContract {
+
+    interface View extends BaseContract.BaseView {
+        void showRecommendList(List<Recommend.RecommendBooks> list);
+
+        void showBookToc(String bookId, List<BookMixAToc.mixToc.Chapters> list);
+    }
+
+    interface Presenter<T> extends BaseContract.BasePresenter<T> {
+
+        void getRecommendList();
+    }
+
+}
+
