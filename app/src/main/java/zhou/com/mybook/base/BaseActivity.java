@@ -44,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else if (statusBarColor != -1) {
             statusBarView = StatusBarCompat.compat(this, statusBarColor);
         }
+
         mContext = this;
         ButterKnife.bind(this);
         common_toolbar = ButterKnife.findById(this, R.id.common_toolbar);

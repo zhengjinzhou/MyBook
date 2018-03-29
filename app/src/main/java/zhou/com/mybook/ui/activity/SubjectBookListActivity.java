@@ -41,7 +41,6 @@ import zhou.com.mybook.view.SupportDividerItemDecoration;
  */
 public class SubjectBookListActivity extends BaseActivity implements SubjectBookListContract.View,OnRvItemClickListener<String>{
 
-    private static final String TAG = "SubjectBookListActivity";
     @BindView(R.id.viewPager) ViewPager viewPager;
     @BindView(R.id.tabLayout) TabLayout tabLayout;
     @BindView(R.id.rsvTags) ReboundScrollView rsvTags;
@@ -140,7 +139,7 @@ public class SubjectBookListActivity extends BaseActivity implements SubjectBook
 
     @Override
     public void showBookListTags(TagTypeBean data) {
-        Log.d(TAG, "showBookListTags: "+data.toString());
+        //Log.d(TAG, "showBookListTags: "+data.toString());
         mTagList.clear();
         mTagList.addAll(data.getData());
         mTagAdapter.notifyDataSetChanged();

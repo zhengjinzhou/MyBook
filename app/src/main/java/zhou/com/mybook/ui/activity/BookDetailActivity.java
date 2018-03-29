@@ -113,6 +113,8 @@ public class BookDetailActivity extends BaseActivity implements BookDetailContra
 
     @Override
     public void configView() {
+        showDialog();
+
         mRvHotReview.setHasFixedSize(true);
         mRvHotReview.setLayoutManager(new LinearLayoutManager(this));
         mHotReviewAdapter = new HotReviewAdapter(mContext, mHotReviewList, this);
@@ -176,7 +178,7 @@ public class BookDetailActivity extends BaseActivity implements BookDetailContra
 
     @Override
     public void complete() {
-
+        dismissDialog();
     }
 
     @Override

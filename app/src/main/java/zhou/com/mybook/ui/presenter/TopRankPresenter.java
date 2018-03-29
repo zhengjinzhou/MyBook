@@ -21,10 +21,8 @@ import zhou.com.mybook.utils.StringUtils;
 public class TopRankPresenter extends RxPresenter<TopRankContract.View> implements TopRankContract.Presenter<TopRankContract.View> {
 
     private BookApi bookApi;
-    private TopRankActivity topRankActivity;
 
-    public TopRankPresenter(TopRankActivity topRankActivity) {
-        this.topRankActivity = topRankActivity;
+    public TopRankPresenter() {
         bookApi = new BookApi(new OkHttpClient());
     }
 

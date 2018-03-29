@@ -1,6 +1,5 @@
 package zhou.com.mybook.ui.activity;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 
@@ -22,10 +21,9 @@ import zhou.com.mybook.ui.presenter.TopRankPresenter;
  */
 public class TopRankActivity extends BaseActivity implements TopRankContract.View{
 
-    private static final String TAG = "TopRankActivity";
     @BindView(R.id.elvFeMale) ExpandableListView elvFeMale;
     @BindView(R.id.elvMale) ExpandableListView elvMale;
-    private TopRankPresenter mPresenter = new TopRankPresenter(this);
+    private TopRankPresenter mPresenter = new TopRankPresenter();
 
     //男生
     private List<TopRankBean.MaleBean> maleGroups = new ArrayList<>();

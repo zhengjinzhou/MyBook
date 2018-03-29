@@ -37,7 +37,6 @@ public class BookApplication extends Application {
 
     protected void initNightMode() {
         boolean isNight = SharedPreferencesUtil.getInstance().getBoolean(Constant.ISNIGHT, false);
-        LogUtils.d("isNight=" + isNight);
         if (isNight) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {

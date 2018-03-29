@@ -43,9 +43,6 @@ import zhou.com.mybook.view.ReboundScrollView;
  */
 public class SubCategoryListActivity extends BaseActivity implements SubCategoryActivityContract.View {
 
-
-    private static final String TAG = "SubCategoryListActivity";
-
     public static void startActivity(Context context, String name, @Constant.Gender String gender) {
         Intent intent = new Intent(context, SubCategoryListActivity.class);
         intent.putExtra(INTENT_CATE_NAME, name);
@@ -128,7 +125,7 @@ public class SubCategoryListActivity extends BaseActivity implements SubCategory
 
     @Override
     public void showCategoryList(CategoryListLv2 data) {
-        Log.d(TAG, "showCategoryList: "+data.toString());
+        //Log.d(TAG, "showCategoryList: "+data.toString());
         mMinors.clear();
         mMinors.add(cate);
         if (gender.equals(Constant.Gender.MALE)) {

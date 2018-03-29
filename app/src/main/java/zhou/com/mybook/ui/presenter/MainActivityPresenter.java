@@ -27,10 +27,8 @@ import zhou.com.mybook.utils.ToastUtils;
 public class MainActivityPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter<MainContract.View>{
 
     public static boolean isLastSyncUpdateed = false;
-    MainActivity mainActivity;
     BookApi bookApi;
-    public MainActivityPresenter(MainActivity mainActivity){
-        this.mainActivity = mainActivity;
+    public MainActivityPresenter(){
         bookApi = new BookApi(new OkHttpClient());
     }
 
@@ -42,15 +40,7 @@ public class MainActivityPresenter extends RxPresenter<MainContract.View> implem
             for (Recommend.RecommendBooks bean : list) {
                 if (!bean.isFromSD) {
                     Observable<BookMixAToc.mixToc> fromNetWork = bookApi.getBookMixAToc(bean._id, "chapters")
-                            .map(new Func1<BookMixAToc, BookMixAToc.mixToc>() {
-                                @Override
-                                public BookMixAToc.mixToc call(BookMixAToc data) {
-                                    return data.mixToc;
-                                }
-                            })
-//                    .compose(RxUtil.<BookMixAToc.mixToc>rxCacheListHelper(
-//                            StringUtils.creatAcacheKey("book-toc", bean._id, "chapters")))
-                            ;
+                            .map(data -> data.mixToc);
                     observables.add(fromNetWork);
                 }
             }

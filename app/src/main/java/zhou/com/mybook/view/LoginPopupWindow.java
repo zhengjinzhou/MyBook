@@ -39,9 +39,9 @@ public class LoginPopupWindow extends PopupWindow implements View.OnTouchListene
         mContentView = LayoutInflater.from(activity).inflate(R.layout.layout_login_popup_window, null);
         setContentView(mContentView);
 
-        qq = (ImageView) mContentView.findViewById(R.id.ivQQ);
-        weibo = (ImageView) mContentView.findViewById(R.id.ivWeibo);
-        wechat = (ImageView) mContentView.findViewById(R.id.ivWechat);
+        qq =  mContentView.findViewById(R.id.ivQQ);
+        weibo =  mContentView.findViewById(R.id.ivWeibo);
+        wechat =  mContentView.findViewById(R.id.ivWechat);
 
         qq.setOnTouchListener(this);
         weibo.setOnTouchListener(this);
@@ -73,12 +73,7 @@ public class LoginPopupWindow extends PopupWindow implements View.OnTouchListene
                     break;
             }
 
-            qq.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    dismiss();
-                }
-            }, 500);
+            qq.postDelayed(() -> dismiss(), 500);
 
         }
     }

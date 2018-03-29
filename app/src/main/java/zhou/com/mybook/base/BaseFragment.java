@@ -128,6 +128,9 @@ public abstract class BaseFragment extends Fragment{
         return view.getVisibility() == View.VISIBLE;
     }
 
+    /**
+     * 使用 RefWatcher监控 Fragment
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();

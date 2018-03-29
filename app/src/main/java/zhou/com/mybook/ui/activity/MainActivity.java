@@ -4,20 +4,14 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.menu.MenuBuilder;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -50,14 +44,11 @@ import zhou.com.mybook.view.LoginPopupWindow;
 
 public class MainActivity extends BaseActivity implements MainContract.View, LoginPopupWindow.LoginTypeListener {
 
-    private static final String TAG = "MainActivity";
-    @BindView(R.id.viewPager)
-    ViewPager viewPager;
-    @BindView(R.id.tabLayout)
-    TabLayout tabLayout;
+    @BindView(R.id.viewPager) ViewPager viewPager;
+    @BindView(R.id.tabLayout) TabLayout tabLayout;
     private LoginPopupWindow popupWindow;
 
-    private MainActivityPresenter mPresenter = new MainActivityPresenter(this);
+    private MainActivityPresenter mPresenter = new MainActivityPresenter();
 
     @Override
     public int getLayout() {
@@ -72,9 +63,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     @Override
     public void initData() {
-
         startService(new Intent(this, DownloadBookService.class));
-
         List<String> mDatas = Arrays.asList(getResources().getStringArray(R.array.home_tabs));
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new RecommendFragment());
@@ -119,13 +108,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
                 popupWindow.showAtLocation(common_toolbar, Gravity.CENTER, 0, 0);
                 break;
             case R.id.action_sync_bookshelf:
-                showDialog();
+               // showDialog();
                 mPresenter.syncBookShelf();
-                if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
-                }
-                popupWindow.showAtLocation(common_toolbar, Gravity.CENTER, 0, 0);
                 break;
             case R.id.action_scan_local_book:
                 requestPermission();
@@ -222,13 +206,11 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     @Override
     public void syncBookShelfCompleted() {
-
         EventManager.refreshCollectionList();
     }
 
     @Override
     public void showError() {
-
     }
 
     public void setCurrentItem(int position) {
@@ -237,7 +219,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     @Override
     public void complete() {
-
     }
 
     @Override
